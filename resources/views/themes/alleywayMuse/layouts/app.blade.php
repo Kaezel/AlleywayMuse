@@ -9,13 +9,23 @@
     <link rel="stylesheet" href="css/main.css">
     <title>AlleywayMuse CoffeeShop</title>
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/themes/alleywayMuse/main.css'])
+    @vite([
+        'resources/sass/app.scss',
+        'resources/js/app.js',
+
+        'resources/views/themes/alleywayMuse/assets/css/main.css',
+        'resources/views/themes/alleywayMuse/assets/plugins/jqueryui/jquery-ui.css',
+
+        'resources/views/themes/alleywayMuse/assets/js/main.js',
+        'resources/views/themes/alleywayMuse/assets/plugins/jqueryui/jquery-ui.min.js',
+    ])
 
 </head>
 <body>
     @include('themes.alleywayMuse.shared.header')
-    @include('themes.alleywayMuse.shared.slider')
     @yield('content')
     @include('themes.alleywayMuse.shared.footer')
+    
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
 </html>

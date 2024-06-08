@@ -14,6 +14,10 @@ use Modules\Shop\App\Http\Controllers\ShopController;
 |
 */
 
+use Modules\Shop\App\Http\Controllers\ProductController;
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
 Route::group([], function () {
     Route::resource('shop', ShopController::class)->names('shop');
 });

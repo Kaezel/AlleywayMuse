@@ -1,5 +1,5 @@
 @extends('themes.alleywayMuse.layouts.app')
-
+@include('themes.alleywayMuse.shared.slider')
 @section('content')
 
 <section class="popular">
