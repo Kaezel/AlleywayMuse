@@ -72,7 +72,7 @@
             <div class="row">
               <div class="d-lg-flex justify-content-between align-items-center">
                 <div class="mb-3 mb-lg-0">
-                  <p class="mb-0"> <span class="text-dark">24 </span> Products found </p>
+                  &nbsp;
                 </div>
                 <div class="d-flex mt-2 mt-lg-0">
                   <div class="me-2 flex-grow-1">
@@ -99,162 +99,21 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-3 col-6">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_01.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 1</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_02.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 2</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_03.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 3</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_04.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 4</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_01.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 1</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_02.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 2</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_03.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 3</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6 mt-3 mt-lg-0">
-                <div class="card card-product card-body p-lg-4 p3">
-                  <a href="#"><img src="{{ asset('themes/alleywayMuse/assets/img/shop_04.jpg') }}" alt="" class="img-fluid"></a>
-                  <h3 class="product-name mt-3">Product 4</h3>
-                  <div class="rating">
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                    <i class="bx bxs-star"></i>
-                  </div>
-                  <div class="detail d-flex justify-content-between align-items-center mt-4">
-                     <p class="price">IDR 200.000</p>
-                     <a href="#" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
-                  </div>
-                </div>
-              </div>
+                @forelse ($products as $product)
+                    @include('themes.alleywayMuse.products.product_box', ['product'=> $product])
+              @empty
+                <P>Product Empty</P>
+              @endforelse
+
             </div>
             <div class="row mt-5">
               <div class="col-12">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
-                </nav>
+                {!! $products->links() !!}
               </div>
             </div>
           </section>
         </div>
       </div>
 </section>
+
 @endsection

@@ -5,6 +5,10 @@ namespace Modules\Shop\App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
+use Modules\Shop\Repositories\Front\Interfaces\ProductRepositoryInterface;
+use Modules\Shop\Repositories\Front\ProductRepository;
+
+
 class ShopServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'Shop';
@@ -22,6 +26,7 @@ class ShopServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+        $this->registerRepositories();
     }
 
     /**
@@ -111,4 +116,13 @@ class ShopServiceProvider extends ServiceProvider
 
         return $paths;
     }
+
+    private function registerRepositories()
+    {
+        $this->app->bind(
+            ProductRepositoryInterface::class,
+            ProductRepository::class
+        );
+    }
+
 }
