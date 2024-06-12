@@ -11,23 +11,21 @@
             <li><a href="#">Home</a></li>
             <li class="mt-3"><a href="#">Best Seller</a></li>
             <li class="mt-3"><a href="#">Category</a></li>
-            <li class="mt-3"><a href="#">Comunity</a></li>
-            <li class="mt-3"><a href="#">Blog</a></li>
           </ul>
         </div>
         <div class="col-md-3 mt-4 mt-sm-0">
           <h3 class="mb-3">Company</h3>
-          <a href="#">john@example.com</a>
-          <p>Jln. Tamansiswa, No 32 Yogyakarta Indonesia</p>
+          <a href="#">alleywaymuse@gmail.com</a>
+          <p>Jakarta Barat, DKI Jakarta Indonesia</p>
         </div>
       </div>
       <div class="row row-copy mt-4 mt-sm-0">
         <div class="col-md-6">
-          <p>&copy; 2023 IndoToko. All rights reserved.</p>
+          <p>&copy; 2024 AlleywayMuse. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-sm-end">
           <a href="#"><i class='bx bxl-instagram-alt' ></i></a>
-          <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
+          <a href="#"><i class='bx bxl-whatsapp' ></i></a>
         </div>
       </div>
     </div>
