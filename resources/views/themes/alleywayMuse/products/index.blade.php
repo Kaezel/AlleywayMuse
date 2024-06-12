@@ -23,19 +23,19 @@
                 <div class="widget-content widget-categories">
                   <ul class="nav nav-category">
                     <li class="nav-item border-bottom w-100">
-                      <a class="nav-link active" aria-current="page" href="#">Clothing <i class='bx bx-chevron-right'></i></a>
+                      <a class="nav-link active" aria-current="page" href="#">Coffee <i class='bx bx-chevron-right'></i></a>
                     </li>
                     <li class="nav-item border-bottom w-100">
-                      <a class="nav-link" href="#">Shoes <i class='bx bx-chevron-right'></i></a>
+                      <a class="nav-link" href="#">Pastry <i class='bx bx-chevron-right'></i></a>
                     </li>
                     <li class="nav-item border-bottom w-100">
-                      <a class="nav-link" href="#">Bags <i class='bx bx-chevron-right'></i></a>
+                      <a class="nav-link" href="#">Coffee Bean <i class='bx bx-chevron-right'></i></a>
                     </li>
                     <li class="nav-item border-bottom w-100">
-                      <a class="nav-link" href="#">Electronics <i class='bx bx-chevron-right'></i></a>
+                      <a class="nav-link" href="#">Merchandise <i class='bx bx-chevron-right'></i></a>
                     </li>
                     <li class="nav-item border-bottom w-100">
-                      <a class="nav-link" href="#">Accessories <i class='bx bx-chevron-right'></i></a>
+                      <a class="nav-link" href="#">Tumbler <i class='bx bx-chevron-right'></i></a>
                     </li>
                   </ul>                  
                 </div>
@@ -66,7 +66,7 @@
           <section class="col-lg-9 col-md-12 products">
             <div class="card mb-4 bg-light border-0 section-header">
               <div class="card-body p-5">
-                <h2 class="mb-0">Accessories</h2>
+                <h2 class="mb-0">Coffee</h2>
               </div>
             </div>
             <div class="row">

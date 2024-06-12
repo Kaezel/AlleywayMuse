@@ -10,7 +10,7 @@
         <i class="bx bxs-star"></i>
       </div>
       <div class="detail d-flex justify-content-between align-items-center mt-4">
-         <p class="price">IDR {{ $product->price_label }}</p>
+         <p class="price">Rp.{{ $product->price_label }}</p>
          <a href="shop_product_link($product)" class="btn-cart"><i class="bx bx-cart-alt"></i></a>
       </div>
     </div>
