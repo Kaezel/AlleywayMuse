@@ -110,7 +110,7 @@ class ProductController extends Controller
     public function show($categorySlug, $productSlug)
     {
         $sku = Arr::last(explode('-', $productSlug));
-       
+        
         $product = $this->productRepository->findBySKU($sku);
 
         $this->data['product'] = $product;

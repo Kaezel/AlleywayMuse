@@ -19,10 +19,10 @@
                 <div id="product-images" class="carousel slide" data-ride="carousel">
                     <!-- slides -->
                     <div class="carousel-inner">
-                        <div class="carousel-item active"> <img src="{{ asset('img/1.jpg') }}" alt="Product 1"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('img/2.jpg') }}" alt="Product 2"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('img/3.jpg') }}" alt="Product 3"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('img/4.jpg') }}" alt="Product 4"> </div>
+                        <div class="carousel-item active"> <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" alt="Product 1"> </div>
+                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" alt="Product 2"> </div>
+                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\3.jpg') }}" alt="Product 3"> </div>
+                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\4.jpg') }}" alt="Product 4"> </div>
                     </div> <!-- Left right -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,11 +36,11 @@
                     <ol class="carousel-indicators list-inline">
                         <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> <img src="{{ asset('img/1.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#product-images">
-                                <img src="{{ asset('img/2.jpg') }}" class="img-fluid"> </a> </li>
+                                <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#product-images">
-                                <img src="{{ asset('img/3.jpg') }}" class="img-fluid"> </a> </li>
+                                <img src="{{ asset('themes\alleywayMuse\assets\img\3.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-3" data-bs-slide-to="3" data-bs-target="#product-images">
-                                <img src="{{ asset('img/4.jpg') }}" class="img-fluid"> </a> </li>
+                                <img src="{{ asset('themes\alleywayMuse\assets\img\4.jpg') }}" class="img-fluid"> </a> </li>
                     </ol>
                 </div>
             </div>
@@ -68,15 +68,18 @@
                     </div>
                     <hr class="my-6">
                     <div class="product-select mt-3 row justify-content-start g-2 align-items-center">
-                        <div class="col-md-2 col-2">
-                            <input type="number" name="qty" value="1" class="form-control" min="1" />
+                        @include('themes.alleywayMuse.shared.flash')
+                        {{ html()->form('post', route('carts.store'))->open() }}
+                        <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                        <div class="row">
+                            <div class="col-md-2 col-2">
+                                <input type="number" name="qty" value="1" class="form-control" min="1" />
+                            </div>
+                            <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
+                                <button type="submit" class="btn btn-add-cart"><i class="bx bx-cart-alt"></i> Add to cart</button>
+                            </div>
                         </div>
-                        <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
-                            <button type="button" class="btn btn-add-cart"><i class="bx bx-cart-alt"></i> Add to cart</button>
-                        </div>
-                        <div class="col-md-4 col-4">
-                            <a class="btn btn-light" href="shop-wishlist.html" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist"><i class="bx bx-heart"></i></a>
-                        </div>
+                        {{ html()->form()->close() }}
                     </div>
                     <hr class="my-6">
                     <div class="product-info">

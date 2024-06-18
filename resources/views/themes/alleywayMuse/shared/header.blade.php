@@ -11,7 +11,7 @@
           </div>
           <ul class="navbar-nav ms-auto mt-3 mt-sm-0">
             <li class="nav-item me-5">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ Route('carts.index') }}">
                 <i class="bx bx-cart-alt"></i>
                 <span class="badge text-bg-warning rounded-circle position-absolute">3</span>
               </a>
