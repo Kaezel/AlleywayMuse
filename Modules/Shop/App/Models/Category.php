@@ -51,7 +51,7 @@ class Category extends Model
         $childIDs = [];
         if(!empty($categories)) {
             foreach ($categories as $category) {
-                $childIDs[] = $category-id;
+                $childIDs[] = $category->id;
                 $childIDs = array_merge($childIDs, Category::childIDs($category->id));
             }
         }

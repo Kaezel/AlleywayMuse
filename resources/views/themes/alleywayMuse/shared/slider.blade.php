@@ -1,9 +1,7 @@
 <div class="container menu-wrapper fixed-top d-none d-lg-block">
     <div class="menu d-flex justify-content-center align-items-center">
-      <a class="nav-link active" href="index.html">Home</a>
-      <a class="nav-link" href="products.html">Best Seller</a>
-      <a class="nav-link" href="products.html">New Arrival</a>
-      <a class="nav-link" href="products.html">Blog</a>
+      <li><a class="nav-link active" href="{{ ('/') }}">Home</a></li>
+      <li><a class="nav-link" href="{{ url('products') }}">Products</a></li>
     </div>
   </div>
 

@@ -17,6 +17,7 @@ class ProductController extends Controller
     protected $productRepository;
     protected $categoryRepository;
     protected $tagRepository;
+    protected $defaultPriceRange;
     protected $sortingQuery;
 
     public function __construct(ProductRepositoryInterface $productRepository, CategoryRepositoryInterface $categoryRepository, TagRepositoryInterface $tagRepository)
@@ -73,7 +74,7 @@ class ProductController extends Controller
         return $this->loadTheme('products.index', $this->data);
     }
 
-    public function category($categorySlug)
+    public function category($categorySlug, Request $request)
     {
         $category = $this->categoryRepository->findBySlug($categorySlug);
 
@@ -83,6 +84,15 @@ class ProductController extends Controller
                 'category' => $categorySlug,
             ]
         ];
+
+        if ($request->get('sort')) {
+            $sort = $this->sortingRequest($request);
+            $options['sort'] = $sort;
+
+            $this->sortingQuery = '?sort=' . $sort['sort'] . '&order=' . $sort['order'];
+            
+            $this->data['sortingQuery'] = $this->sortingQuery;
+        }
 
         $this->data['products'] = $this->productRepository->findAll($options);
         $this->data['category'] = $category;

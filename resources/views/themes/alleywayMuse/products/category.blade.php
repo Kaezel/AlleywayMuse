@@ -5,8 +5,9 @@
       <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Products</li>
+            <li class="breadcrumb-item"><a href="{{ ('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('products') }}">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> {{$category->name}}</li>
           </ol>
         </nav>
       </div>
@@ -20,7 +21,7 @@
           <section class="col-lg-9 col-md-12 products">
             <div class="card mb-4 bg-light border-0 section-header">
               <div class="card-body p-5">
-                <h2 class="mb-0">Category : {{$category->name}}</h2>
+                <h2 class="mb-0">{{$category->name}}</h2>
               </div>
             </div>
             <div class="row">
@@ -30,31 +31,17 @@
                 </div>
                 <div class="d-flex mt-2 mt-lg-0">
                   <div class="me-2 flex-grow-1">
-                    <!-- select option -->
-                    <select class="form-select">
-                      <option selected="">Show: 50</option>
-                      <option value="10">10</option>
-                      <option value="20">20</option>
-                      <option value="30">30</option>
-                    </select>
+                    &nbsp;
                   </div>
                   <div>
-                    <!-- select option -->
-                    <select class="form-select">
-                      <option selected="">Sort by: Featured</option>
-                      <option value="Low to High">Price: Low to High</option>
-                      <option value="High to Low"> Price: High to Low</option>
-                      <option value="Release Date"> Release Date</option>
-                      <option value="Avg. Rating"> Avg. Rating</option>
-    
-                    </select>
+                  {!! html()->select('sorting', $sortingOptions, $sortingQuery)->class(['form-select'])->attribute('onchange', 'this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);') !!}
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
-                @forelse ($products as $product)
-                    @include('themes.alleywayMuse.products.product_box', ['product'=> $product])
+              @forelse ($products as $product)
+                @include('themes.alleywayMuse.products.product_box', ['product'=> $product])
               @empty
                 <P>Product Empty</P>
               @endforelse
