@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white fixed-top py-4 shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Alleyway<span>Muse</span></a>
+      <a class="navbar-brand" href="{{ ('/') }}">Alleyway<span>Muse</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,10 +22,8 @@
                 Menu
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="index.html">Home</a></li>
-                <li><a class="dropdown-item" href="products.html">Best Seller</a></li>
-                <li><a class="dropdown-item" href="products.html">New Arrival</a></li>
-                <li><a class="dropdown-item" href="products.html">Blog</a></li>
+                <li><a class="dropdown-item" href="{{ ('/') }}">Home</a></li>
+                <li><a class="dropdown-item" href="{{ url('products') }}">Products</a></li>
               </ul>
             </div>
             @guest

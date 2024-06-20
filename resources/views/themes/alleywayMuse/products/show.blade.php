@@ -34,7 +34,7 @@
                     </button>
                     <!-- Thumbnails -->
                     <ol class="carousel-indicators list-inline">
-                        <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> <img src="{{ asset('img/1.jpg') }}" class="img-fluid"> </a> </li>
+                        <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#product-images">
                                 <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#product-images">
