@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-6 text-sm-end">
           <a href="https://www.instagram.com/alleyway.muse/" target="blank"><i class='bx bxl-instagram-alt' ></i></a>
-          <a href="#"><i class='bx bxl-whatsapp' ></i></a>
+          <a href="https://wa.me/+6289155528276" target="blank"><i class="bx bxl-whatsapp"></i></a>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@
       <div class="container">
         <div class="row">
           <aside class="col-lg-3 col-md-4 mb-6 mb-md-0">
-          @include('themes.alleywayMuse.products.sidebar', ['categories' => $categories])
+            @include('themes.alleywayMuse.products.sidebar', ['categories' => $categories])
           </aside>
           <section class="col-lg-9 col-md-12 products">
             <div class="card mb-4 bg-light border-0 section-header">

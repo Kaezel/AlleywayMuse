@@ -34,7 +34,8 @@
                     </button>
                     <!-- Thumbnails -->
                     <ol class="carousel-indicators list-inline">
-                        <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" class="img-fluid"> </a> </li>
+                        <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> 
+                                <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#product-images">
                                 <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" class="img-fluid"> </a> </li>
                         <li class="list-inline-item"> <a id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#product-images">
@@ -86,7 +87,7 @@
                         <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
-                                    <td>SKU:</td>
+                                    <td>Product Number:</td>
                                     <td>{{ $product->sku}}</td>
                                 </tr>
                                 <tr>
@@ -94,8 +95,8 @@
                                     <td>{{ $product->stock_status_label }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Type:</td>
-                                    <td>Fruits</td>
+                                    <td>Product Category:</td>
+                                    <td>{{ $category->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Shipping:</td>
@@ -109,9 +110,8 @@
                     <hr class="my-6">
                     <div class="product-share">
                         <ul>
-                            <li><a href="#"><i class="bx bxl-facebook-circle"></i></a></li>
-                            <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                            <li><a href="#"><i class="bx bxl-whatsapp"></i></a></li>
+                            <li><a href="https://www.instagram.com/alleyway.muse/" target="blank"><i class="bx bxl-instagram"></i></a></li>
+                            <li><a href="https://wa.me/+6289155528276" target="blank"><i class="bx bxl-whatsapp"></i></a></li>
                         </ul>
                     </div>
                 </div>
