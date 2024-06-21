@@ -33,6 +33,7 @@ class Product extends Model
 		'excerpt',
 		'body',
 		'metas',
+        'weight',
     ];
     
     public const DRAFT = 'DRAFT';
@@ -104,6 +105,7 @@ class Product extends Model
     {
         return number_format($this->price);
     }
+    
     public function getHasSalePriceAttribute()
     {
         return $this->sale_price != null;

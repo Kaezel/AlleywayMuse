@@ -1,12 +1,14 @@
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')
+
 <section class="breadcrumb-section pb-4 pb-md-4 pt-4 pt-md-4">
         <div class="container">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('products') }} ">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
                 </ol>
             </nav>
         </div>
@@ -24,7 +26,10 @@
                         <div class="col-lg-8 col-md-7">
                             {{ html()->form('PUT', route('carts.update'))->open() }}
                             <ul class="list-group list-group-flush">
-                                @foreach($cart->items as $item)
+                                @forelse($cart->items as $item)
+                                @php
+                                    $price = $item->product->has_sale_price ? $item->product->sale_price : $item->product->price;
+                                @endphp
                                 <li class="list-group-item py-3 border-top">
                                     <div class="row align-items-center">
                                         <div class="col-6 col-md-6 col-lg-7">
@@ -57,11 +62,15 @@
                                             <input type="number" name="qty[{{ $item->id }}]" value="{{ $item->qty}}" class="form-control" min="1">
                                         </div>
                                         <div class="col-3 text-lg-end text-start text-md-end col-md-3">
-                                            <span class="fw-bold">Rp. {{ $item->sub_total }}</span>
+                                            <span class="fw-bold">Rp {{ number_format($price) }}</span>
                                         </div>
                                     </div>
                                 </li>
-                                @endforeach
+                                @empty
+                                    <div class="col-12">
+                                        <p>There are no items in the cart!</p>
+                                    </div>
+                                @endforelse
                             </ul>
                             <div class="d-flex justify-content-between mt-4">
                                 <a href="{{ route('products.index') }}" class="btn btn-first">Continue Shopping</a>
@@ -70,7 +79,7 @@
                             {{ html()->form()->close() }}
                         </div>
                         <div class="col-12 col-lg-4 col-md-5">
-                            <div class="mb-5 card mt-6">
+                            <div class="mb-5 card mt-6 shadow">
                                 <div class="card-body p-6">
                                     <!-- heading -->
                                     <h2 class="h5 mb-4">Summary</h2>
@@ -109,12 +118,10 @@
                                     </div>
                                     <div class="d-grid mb-1 mt-4">
                                         <!-- btn -->
-                                        <button
-                                            class="btn btn-first btn-lg d-flex justify-content-between align-items-center"
-                                            type="submit">
+                                        <a class="btn btn-first btn-lg d-flex justify-content-between align-items-center @if($cart->items->isEmpty()) disabled @endif" href="{{ route('orders.checkout') }}">
                                             Go to Checkout
                                             <span class="fw-bold">{{$cart->grand_total_label }}</span>
-                                        </button>
+                                        </a>
                                     </div>
                                     <!-- text -->
                                     <p>

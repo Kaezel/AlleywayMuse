@@ -20,9 +20,11 @@ class CartRepository implements CartRepositoryInterface{
             ->first();
         
         if (!$cart) {
+            $taxPercent = env('TAX_PERCENT', 10) / 100;
             return Cart::create([
                 'user_id' => $user->id,
                 'expired_at' => (new Carbon())->addDay(7),
+                'tax_percent' => $taxPercent,
             ]);
         }
 
@@ -64,6 +66,10 @@ class CartRepository implements CartRepositoryInterface{
         return CartItem::where('id', $id)->delete();
     }
 
+    public function clear(User $user) : void
+    {
+        Cart::forUser($user)->delete();
+    }
 
     public function updateQty($items = []): void
     {
@@ -84,7 +90,9 @@ class CartRepository implements CartRepositoryInterface{
         $baseTotalPrice = 0;
         $taxAmount = 0;
         $discountAmount = 0;
+        $discountPercent = 0;
         $grandTotal = 0;
+        $totalWeight = 0;
 
         if (count($cart->items) > 0) {
             foreach ($cart->items as $item) {
@@ -94,18 +102,27 @@ class CartRepository implements CartRepositoryInterface{
                     $discountAmountItem = $item->product->price - $item->product->sale_price;
                     $discountAmount += $item->qty * $discountAmountItem;
                 }
+
+                $totalWeight += ($item->qty * $item->product->weight);
             }
         }
 
         $nettTotal = $baseTotalPrice - $discountAmount;
-        $taxAmount = 0.11 * $nettTotal;
+        $taxPercent = env('TAX_PERCENT', 10) / 100; // Ensure we fetch the tax percent again
+        $taxAmount = $taxPercent * $nettTotal;
         $grandTotal = $nettTotal + $taxAmount;
+        if ($baseTotalPrice) {
+            $discountPercent = ($discountAmount / $baseTotalPrice) * 100;
+        }
 
         $cart->update([
             'base_total_price' => $baseTotalPrice,
             'tax_amount' => $taxAmount,
             'discount_amount' => $discountAmount,
+            'discount_percent' => $discountPercent,
             'grand_total' => $grandTotal,
+            'total_weight' => $totalWeight,
+            'tax_percent' => $taxPercent,
         ]);
     }
 }

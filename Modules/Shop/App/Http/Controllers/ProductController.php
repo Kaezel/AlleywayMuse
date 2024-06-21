@@ -28,8 +28,8 @@ class ProductController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->defaultPriceRange = [
-            'min' => 10000,
-            'max' => 75000,
+            'min' => 20000,
+            'max' => 50000,
         ];
 
         $this->data['categories'] = $this->categoryRepository->findAll();
@@ -77,13 +77,19 @@ class ProductController extends Controller
     public function category($categorySlug, Request $request)
     {
         $category = $this->categoryRepository->findBySlug($categorySlug);
+        $priceFilter = $this->getPriceRangeFilter($request);
 
         $options = [
             'per_page' => $this->perPage,
             'filter' => [
                 'category' => $categorySlug,
+                'price' => $priceFilter,
             ]
         ];
+
+        if ($request->get('price')) {
+            $this->data['filter']['price'] = $priceFilter;
+        }
 
         if ($request->get('sort')) {
             $sort = $this->sortingRequest($request);
@@ -121,9 +127,11 @@ class ProductController extends Controller
     {
         $sku = Arr::last(explode('-', $productSlug));
         
+        $category = $this->categoryRepository->findBySlug($categorySlug);
         $product = $this->productRepository->findBySKU($sku);
 
         $this->data['product'] = $product;
+        $this->data['category'] = $category;
 
         return $this->loadTheme('products.show', $this->data);
     }

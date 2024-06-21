@@ -17,6 +17,12 @@ use Modules\Shop\Repositories\Front\TagRepository;
 use Modules\Shop\Repositories\Front\Interfaces\CartRepositoryInterface;
 use Modules\Shop\Repositories\Front\CartRepository;
 
+use Modules\Shop\Repositories\Front\Interfaces\AddressRepositoryInterface;
+use Modules\Shop\Repositories\Front\AddressRepository;
+
+use Modules\Shop\Repositories\Front\Interfaces\OrderRepositoryInterface;
+use Modules\Shop\Repositories\Front\OrderRepository;
+
 class ShopServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'Shop';
@@ -146,6 +152,15 @@ class ShopServiceProvider extends ServiceProvider
             CartRepositoryInterface::class,
             CartRepository::class
         );
-    }
 
+        $this->app->bind(
+            AddressRepositoryInterface::class,
+            AddressRepository::class
+        );
+
+        $this->app->bind(
+            OrderRepositoryInterface::class,
+            OrderRepository::class
+        );
+    }
 }

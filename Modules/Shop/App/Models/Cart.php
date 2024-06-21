@@ -1,10 +1,15 @@
 <?php
 
 namespace Modules\Shop\App\Models;
+
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cart extends Model
 {
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +22,11 @@ class Cart extends Model
         'expired_at',
         'base_total_price',
         'discount_amount',
+        'discount_percent',
+        'tax_percent',
         'tax_amount',
         'grand_total',
+        'total_weight',
     ];
     
     public function user()
