@@ -18,31 +18,7 @@
             <div class="col-md-6">
                 <div id="product-images" class="carousel slide" data-ride="carousel">
                     <!-- slides -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active"> <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" alt="Product 1"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" alt="Product 2"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\3.jpg') }}" alt="Product 3"> </div>
-                        <div class="carousel-item"> <img src="{{ asset('themes\alleywayMuse\assets\img\4.jpg') }}" alt="Product 4"> </div>
-                    </div> <!-- Left right -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    <!-- Thumbnails -->
-                    <ol class="carousel-indicators list-inline">
-                        <li class="list-inline-item active"> <a id="carousel-selector-0" class="active" data-bs-slide-to="0" data-bs-target="#product-images"> 
-                                <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" class="img-fluid"> </a> </li>
-                        <li class="list-inline-item"> <a id="carousel-selector-1" data-bs-slide-to="1" data-bs-target="#product-images">
-                                <img src="{{ asset('themes\alleywayMuse\assets\img\2.jpg') }}" class="img-fluid"> </a> </li>
-                        <li class="list-inline-item"> <a id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#product-images">
-                                <img src="{{ asset('themes\alleywayMuse\assets\img\3.jpg') }}" class="img-fluid"> </a> </li>
-                        <li class="list-inline-item"> <a id="carousel-selector-3" data-bs-slide-to="3" data-bs-target="#product-images">
-                                <img src="{{ asset('themes\alleywayMuse\assets\img\4.jpg') }}" class="img-fluid"> </a> </li>
-                    </ol>
+                    <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" alt="Product 1">
                 </div>
             </div>
             <div class="col-md-6">
@@ -98,15 +74,9 @@
                                     <td>Product Category:</td>
                                     <td>{{ $category->name }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Shipping:</td>
-                                    <td><small>01 day shipping.<span class="text-muted">( Free pickup today)</span></small></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    <br>
-                    <p>{!! $product->excerpt !!}</p>
                     <hr class="my-6">
                     <div class="product-share">
                         <ul>
