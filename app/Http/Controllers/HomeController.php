@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Modules\Shop\App\Models\Address;
@@ -48,6 +49,13 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('adminDashboards.dashboardCategory', compact('categories'));
     }
+
+    public function categoryProduct()
+    {
+        $data = DB::table('shop_categories_products')->get();
+
+        return view('adminDashboards.dashboardCategoryProduct', ['data' => $data]);
+    }
     
     public function address()
     {
@@ -69,6 +77,11 @@ class HomeController extends Controller
     public function createCategory()
     {
         return view('adminDashboards.creates.categoryCreate');
+    }
+    
+    public function createCategoryProduct()
+    {
+        return view('adminDashboards.creates.categoryProductCreate');
     }
 
     // STORE
@@ -104,7 +117,7 @@ class HomeController extends Controller
             'sale_price' => 'nullable|numeric',
             'status' => 'required|string|max:255',
             'stock_status' => 'required|string|max:50',
-            'manage_stock' => 'nullable|boolean',
+            'manage_stock' => 'required|string',
             'body' => 'required|string',
             'weight' => 'required|integer',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -160,6 +173,28 @@ class HomeController extends Controller
 
         return redirect()->route('category');
     }
+    
+    public function storeCategoryProduct(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'product_id'   => 'required',
+            'category_id'  => 'required',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $product_id = $request->input('product_id');
+        $category_id = $request->input('category_id');
+
+        // Insert data into shop_categories_products table
+        DB::table('shop_categories_products')->insert([
+            'product_id' => $product_id,
+            'category_id' => $category_id,
+        ]);
+
+        return redirect()->route('categoryproduct');
+    }
 
     // EDIT
     public function editUser(Request $request, $id)
@@ -178,6 +213,16 @@ class HomeController extends Controller
     {
         $categories = Category::find($id);
         return view('adminDashboards.edits.categoryEdit', compact('categories'));
+    }
+    
+    public function editCategoryProduct($product_id, $category_id)
+    {
+        $data = DB::table('shop_categories_products')
+                    ->where('product_id', $product_id)
+                    ->where('category_id', $category_id)
+                    ->first();
+
+        return view('adminDashboards.edits.categoryProductEdit', ['data' => $data]);
     }
 
     public function editAddress(Request $request, $id)
@@ -266,6 +311,36 @@ class HomeController extends Controller
         Category::whereId($id)->update($categories);
         return redirect()->route('category');
     }
+    
+    public function updateCategoryProduct(Request $request, $product_id, $category_id)
+    {
+        $validator = Validator::make($request->all(), [
+            'product_id'      => 'required',
+            'category_id'      => 'required',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $new_product_id = $request->input('product_id');
+        $new_category_id = $request->input('category_id');
+
+        $productExists = DB::table('shop_products')->where('id', $new_product_id)->exists();
+        $categoryExists = DB::table('shop_categories')->where('id', $new_category_id)->exists();
+
+        if (!$productExists || !$categoryExists) {
+            return redirect()->back()->with('error', 'Product ID or Category ID does not exist.');
+        }
+
+        DB::table('shop_categories_products')
+            ->where('product_id', $product_id)
+            ->where('category_id', $category_id)
+            ->update([
+                'product_id' => $new_product_id,
+                'category_id' => $new_category_id,
+            ]);
+
+        return redirect()->route('categoryproduct');
+    }
 
     public function updateAddress(Request $request, $id)
     {
@@ -333,6 +408,16 @@ class HomeController extends Controller
         return redirect()->route('category');
     }
     
+    public function deleteCategoryProduct($product_id, $category_id)
+    {
+        DB::table('shop_categories_products')
+            ->where('product_id', $product_id)
+            ->where('category_id', $category_id)
+            ->delete();
+
+        return redirect()->route('categoryproduct');
+    }
+    
     public function deleteAddress(Request $request, $id)
     {
         $addresses = Address::find($id);
@@ -347,6 +432,8 @@ class HomeController extends Controller
     // INDEX HOME
     public function index()
     {
-        return view('themes.alleywayMuse.home');
+        $popularProducts = Product::whereIn('id', [1,5,3,7])->get();
+
+        return view('themes.alleywayMuse.home', compact('popularProducts'));
     }
 }

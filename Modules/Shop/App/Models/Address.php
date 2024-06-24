@@ -16,7 +16,20 @@ class Address extends Model
 
     protected $table = 'shop_addresses';
 
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'is_primary',
+        'first_name',
+        'last_name',
+        'label',
+        'address1',
+        'address2',
+        'phone',
+        'email',
+        'city',
+        'province',
+        'postcode',
+    ];
     
     protected static function newFactory(): AddressFactory
     {

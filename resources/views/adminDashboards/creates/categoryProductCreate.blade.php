@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Category Product</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -14,7 +14,7 @@
     <!-- /.content-header -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('categoryproduct.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <!-- left column -->
@@ -22,32 +22,25 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                       <div class="card-header">
-                        <h3 class="card-title">Add User</h3>
+                        <h3 class="card-title">Add Category Product</h3>
                       </div>
                       <!-- /.card-header -->
                       <!-- form start -->
                       <form>
                         <div class="card-body">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter Email">
-                            @error('email')
-                                <small>{{ $message }}</small>
-                            @enderror
-                          </div>
-                          <div class="form-group">
-                              <label for="exampleInputEmail1">Name</label>
-                              <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+                              <label for="exampleInputEmail1">Product ID</label>
+                              <input type="text" name="product_id" class="form-control" id="exampleInputEmail1" placeholder="Enter Product ID" required>
                               @error('name')
                                     <small>{{ $message }}</small>
-                                @enderror
-                            </div>
+                              @enderror
+                          </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-                            @error('password')
-                                <small>{{ $message }}</small>
-                            @enderror
+                              <label for="exampleInputEmail1">Category ID</label>
+                              <input type="text" name="category_id" class="form-control" id="exampleInputEmail1" placeholder="Enter Category ID" required>
+                              @error('name')
+                                    <small>{{ $message }}</small>
+                              @enderror
                           </div>
                         </div>
                         <!-- /.card-body -->

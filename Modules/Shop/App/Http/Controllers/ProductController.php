@@ -3,11 +3,10 @@
 namespace Modules\Shop\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
-
+use Modules\Shop\App\Models\Category;
+use Modules\Shop\App\Models\Product;
 use Modules\Shop\Repositories\Front\Interfaces\ProductRepositoryInterface;
 use Modules\Shop\Repositories\Front\Interfaces\CategoryRepositoryInterface;
 use Modules\Shop\Repositories\Front\Interfaces\TagRepositoryInterface;
@@ -169,5 +168,42 @@ class ProductController extends Controller
         }
 
         return $sort;
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $priceFilter = $this->getPriceRangeFilter($request);
+
+        $options = [
+            'per_page' => $this->perPage,
+            'filter' => [
+                'search' => $query,
+                'price' => $priceFilter,
+            ]
+        ];
+
+        if ($request->get('price')) {
+            $this->data['filter']['price'] = $priceFilter;
+        }
+
+        if ($request->get('sort')) {
+            $sort = $this->sortingRequest($request);
+            $options['sort'] = $sort;
+
+            $this->sortingQuery = '?sort=' . $sort['sort'] . '&order=' . $sort['order'];
+            $this->data['sortingQuery'] = $this->sortingQuery;
+        }
+
+        $products = $this->productRepository->findAll($options);
+        $resultCount = $products->total();
+        $categories = Category::all();
+
+        $this->data['products'] = $products;
+        $this->data['query'] = $query;
+        $this->data['resultCount'] = $resultCount;
+        $this->data['categories'] = $categories;
+
+        return $this->loadTheme('products.search', $this->data);
     }
 }

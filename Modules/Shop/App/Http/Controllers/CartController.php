@@ -35,6 +35,12 @@ class CartController extends Controller
         return $this->loadTheme('carts.index', $this->data);
     }
 
+    public function getItemCount()
+    {
+        $itemCount = $this->cartRepository->countItems(auth()->user());
+        return view('themes.alleywayMuse.shared.header', compact('itemCount'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

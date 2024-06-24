@@ -29,12 +29,13 @@
                                 @forelse($cart->items as $item)
                                 @php
                                     $price = $item->product->has_sale_price ? $item->product->sale_price : $item->product->price;
+                                    $subtotal = $price * $item->qty;
                                 @endphp
                                 <li class="list-group-item py-3 border-top">
                                     <div class="row align-items-center">
                                         <div class="col-6 col-md-6 col-lg-7">
                                             <div class="d-flex">
-                                                <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" alt="Ecommerce" style="height: 70px;">
+                                                <img src="{{ asset('themes/alleywayMuse/assets/img/' . $item->product->featured_image) }}" alt="Ecommerce" style="height: 70px;">
                                                 <div class="ms-3">
                                                     <a href="{{ shop_product_link($item->product) }}">
                                                         <h6 class="mb-0">{{ $item->product->name }}</h6>
@@ -62,7 +63,7 @@
                                             <input type="number" name="qty[{{ $item->id }}]" value="{{ $item->qty}}" class="form-control" min="1">
                                         </div>
                                         <div class="col-3 text-lg-end text-start text-md-end col-md-3">
-                                            <span class="fw-bold">Rp {{ number_format($price) }}</span>
+                                            <span class="fw-bold">Rp {{ number_format($subtotal) }}</span>
                                         </div>
                                     </div>
                                 </li>
