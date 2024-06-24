@@ -37,6 +37,13 @@ Route::get('/admin/edit/category/{id}', [App\Http\Controllers\HomeController::cl
 Route::put('/admin/update/category/{id}', [App\Http\Controllers\HomeController::class, 'updateCategory'])->name('category.update');
 Route::delete('/admin/delete/category/{id}', [App\Http\Controllers\HomeController::class, 'deleteCategory'])->name('category.delete');
 
+Route::get('/admin/categoryproduct', [App\Http\Controllers\HomeController::class, 'categoryProduct'])->name('categoryproduct');
+Route::get('/admin/create/categoryproduct', [App\Http\Controllers\HomeController::class, 'createCategoryProduct'])->name('categoryproduct.create');
+Route::post('/admin/store/categoryproduct', [App\Http\Controllers\HomeController::class, 'storeCategoryProduct'])->name('categoryproduct.store');
+Route::get('/admin/edit/categoryproduct/{product_id}/{category_id}', [App\Http\Controllers\HomeController::class, 'editCategoryProduct'])->name('categoryproduct.edit');
+Route::put('/admin/update/categoryproduct/{product_id}/{category_id}', [App\Http\Controllers\HomeController::class, 'updateCategoryProduct'])->name('categoryproduct.update');
+Route::delete('/admin/delete/categoryproduct/{product_id}/{category_id}', [App\Http\Controllers\HomeController::class, 'deleteCategoryProduct'])->name('categoryproduct.delete');
+
 Route::get('/admin/address', [App\Http\Controllers\HomeController::class, 'address'])->name('address');
 Route::get('/admin/edit/address/{id}', [App\Http\Controllers\HomeController::class, 'editAddress'])->name('address.edit');
 Route::put('/admin/update/address/{id}', [App\Http\Controllers\HomeController::class, 'updateAddress'])->name('address.update');

@@ -98,13 +98,6 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="manage_stock">Manage Stock</label>
-                                            <input type="checkbox" name="manage_stock" id="manage_stock" value="{{ $products->stock_status ?? '' }}">
-                                            @error('manage_stock')
-                                                <small>{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
                                             <label for="body">Product Detail</label>
                                             <textarea name="body" class="form-control" id="body" placeholder="Enter Product Description">{{ $products->body ?? '' }}</textarea>
                                             @error('body')

@@ -33,6 +33,12 @@ class CartRepository implements CartRepositoryInterface{
         return $cart;
     }
 
+    public function countItems(User $user): int
+    {
+        $cart = $this->findByUser($user);
+        return $cart ? $cart->items()->count() : 0;
+    }
+
     public function addItem($product, $qty): CartItem
     {
         $cart = $this->findByUser(auth()->user());

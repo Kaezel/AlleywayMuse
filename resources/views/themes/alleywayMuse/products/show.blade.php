@@ -18,7 +18,7 @@
             <div class="col-md-6">
                 <div id="product-images" class="carousel slide" data-ride="carousel">
                     <!-- slides -->
-                    <img src="{{ asset('themes\alleywayMuse\assets\img\p1.jpg') }}" alt="Product 1">
+                    <img src="{{ asset('themes/alleywayMuse/assets/img/' . $product->featured_image) }}" alt="Product 1">
                 </div>
             </div>
             <div class="col-md-6">

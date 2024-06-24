@@ -45,8 +45,6 @@ class OrderController extends Controller
         }
         DB::commit();
 
-        // $this->cartRepository->clear(auth()->user());
-
         return view('themes.alleywayMuse.orders.payment', ['order' => $order]);
     }
     

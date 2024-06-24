@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Category Product</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -14,40 +14,34 @@
     <!-- /.content-header -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('categoryproduct.update', ['product_id' => $data->product_id, 'category_id' => $data->category_id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                   <!-- left column -->
                   <div class="col-md-6">
                     <!-- general form elements -->
                     <div class="card card-primary">
                       <div class="card-header">
-                        <h3 class="card-title">Add User</h3>
+                        <h3 class="card-title">Edit Category Product</h3>
                       </div>
                       <!-- /.card-header -->
                       <!-- form start -->
                       <form>
                         <div class="card-body">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter Email">
-                            @error('email')
-                                <small>{{ $message }}</small>
-                            @enderror
+                              <label for="product_id">Product ID:</label>
+                              <input type="text" id="product_id" name="product_id" value="{{ $data->product_id }}" placeholder="Enter Product ID" required>
+                              @error('product_id')
+                                    <small>{{ $message }}</small>
+                              @enderror
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputEmail1">Name</label>
-                              <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
-                              @error('name')
+                              <label for="category_id">Category ID:</label>
+                              <input type="text" id="category_id" name="category_id" value="{{ $data->category_id }}" placeholder="Enter Category ID" required>
+                              @error('category_id')
                                     <small>{{ $message }}</small>
-                                @enderror
-                            </div>
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-                            @error('password')
-                                <small>{{ $message }}</small>
-                            @enderror
+                              @enderror
                           </div>
                         </div>
                         <!-- /.card-body -->

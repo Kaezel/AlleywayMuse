@@ -28,16 +28,22 @@
                             @csrf
                             <div class="d-flex justify-content-between">
                                 <h5 class="mb-0"><i class='bx bx-map'></i> Delivery Address</h5>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Add a new address</a>
+                                <a href="{{ route('addresses.create') }}" class="btn btn-outline-secondary btn-sm">Add a new address</a> <!-- Modified Line -->
                             </div>
                             <div class="mt-3">
                                 <div class="row">
                                     @forelse ($addresses as $address)
                                     <div class="col-lg-6 col-12 mb-4">
                                         <div class="card card-body p-6">
-                                            <div class="form-check mb-4">
-                                                <input class="form-check-input delivery-address" value="{{ $address->id }}" type="radio" name="address_id" id="addressRadio{{ $address->id }}">
-                                                <label class="form-check-label text-dark" for="addressRadio{{ $address->id }}">{{ $address->label }}</label>
+                                            <div class="mb-4 d-flex justify-content-between">
+                                                <div class="form-check">
+                                                    <input class="form-check-input delivery-address" value="{{ $address->id }}" type="radio" name="address_id" id="addressRadio{{ $address->id }}">
+                                                    <label class="form-check-label text-dark" for="addressRadio{{ $address->id }}">{{ $address->label }}</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <a href="{{ route('addresses.edit', $address->id) }}" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i> Edit</a>
+                                                    <a href="#" class="btn btn-outline-danger btn-sm" onclick="deleteAddress('{{ route('addresses.delete', $address->id) }}', '{{ $address->id }}')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                                </div>
                                             </div>
                                             <!-- address -->
                                             <address>
@@ -75,7 +81,7 @@
                                 <a href="{{ route('carts.index') }}" class="btn btn-second">Back to Shopping Cart</a>
                                 <button type="submit" class="btn btn-first" disabled>Place Order</button>
                             </div>
-                        </form>                                              
+                        </form>
                     </div>
                     <div class="col-12 col-lg-5 col-md-6">
                         <div class="mb-5 card mt-6 shadow">
@@ -92,7 +98,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-6 col-md-6 col-lg-7">
                                                 <div class="d-flex">
-                                                    <img src="{{ asset('themes/alleywayMuse/assets/img/p1.jpg') }}" alt="Ecommerce" style="height: 70px;">
+                                                    <img src="{{ asset('themes/alleywayMuse/assets/img/' . $item->product->featured_image) }}" alt="Ecommerce" style="height: 70px;">
                                                     <div class="ms-3">
                                                         <a href="{{ shop_product_link($item->product) }}">
                                                             <h6 class="mb-0">{{ $item->product->name }}</h6>
@@ -183,5 +189,34 @@
             });
         });
     });
+
+    function deleteAddress(url, addressId) {
+        if (confirm('Are you sure you want to delete this address?')) {
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('address-' + addressId).remove();
+                    alert('Address deleted successfully.');
+                } else {
+                    throw new Error('Failed to delete address. Status: ' + response.status);
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting address:', error);
+                alert('Address deleted successfully, please refresh the page');
+            });
+        }
+    }
 </script>
+
+<!-- jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
