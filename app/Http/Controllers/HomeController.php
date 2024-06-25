@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Modules\Shop\App\Models\Address;
 use Modules\Shop\App\Models\Category;
 use Modules\Shop\App\Models\Product;
+use Modules\Shop\App\Models\ProductInventory;
 
 class HomeController extends Controller
 {
@@ -63,6 +64,12 @@ class HomeController extends Controller
         return view('adminDashboards.dashboardAddress', compact('addresses'));
     }
 
+    public function productInventory()
+    {
+        $inventories = ProductInventory::all();
+        return view('adminDashboards.dashboardInventory', compact('inventories'));
+    }
+
     // CREATE
     public function createUser()
     {
@@ -82,6 +89,11 @@ class HomeController extends Controller
     public function createCategoryProduct()
     {
         return view('adminDashboards.creates.categoryProductCreate');
+    }
+
+    public function createProductInventory()
+    {
+        return view('adminDashboards.creates.inventoryCreate');
     }
 
     // STORE
@@ -195,6 +207,20 @@ class HomeController extends Controller
 
         return redirect()->route('categoryproduct');
     }
+    
+    public function storeProductInventory(Request $request)
+    {
+
+        $request->validate([
+            'product_id' => 'required|integer',
+            'qty' => 'required|integer',
+            'low_stock_threshold' => 'required|integer',
+        ]);
+
+        ProductInventory::create($request->all());
+
+        return redirect()->route('productinventory');
+    }
 
     // EDIT
     public function editUser(Request $request, $id)
@@ -229,6 +255,12 @@ class HomeController extends Controller
     {
         $addresses = Address::find($id);
         return view('adminDashboards.edits.addressEdit', compact('addresses'));
+    }
+
+    public function editProductInventory($id)
+    {
+        $inventory = ProductInventory::findOrFail($id);
+        return view('adminDashboards.edits.inventoryEdit', compact('inventory'));
     }
 
     // UPDATE
@@ -374,6 +406,20 @@ class HomeController extends Controller
         return redirect()->route('address');
     }
 
+    public function updateProductInventory(Request $request, $id)
+    {
+        $request->validate([
+            'product_id' => 'required|integer',
+            'qty' => 'required|integer',
+            'low_stock_threshold' => 'required|integer',
+        ]);
+
+        $inventory = ProductInventory::findOrFail($id);
+        $inventory->update($request->all());
+
+        return redirect()->route('productinventory');
+    }
+
     // DELETE
     public function deleteUser(Request $request, $id)
     {
@@ -427,6 +473,14 @@ class HomeController extends Controller
         }
 
         return redirect()->route('address');
+    }
+    
+    public function deleteProductInventory(Request $request, $id)
+    {
+        $inventory = ProductInventory::findOrFail($id);
+        $inventory->delete();
+
+        return redirect()->route('productinventory');
     }
 
     // INDEX HOME
