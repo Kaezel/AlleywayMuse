@@ -143,6 +143,14 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('productinventory') }}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Product Inventory
+                    </p>
+                </a>
+            </li>
 
         </ul>
     </nav>

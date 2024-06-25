@@ -49,5 +49,12 @@ Route::get('/admin/edit/address/{id}', [App\Http\Controllers\HomeController::cla
 Route::put('/admin/update/address/{id}', [App\Http\Controllers\HomeController::class, 'updateAddress'])->name('address.update');
 Route::delete('/admin/delete/address/{id}', [App\Http\Controllers\HomeController::class, 'deleteAddress'])->name('address.delete');
 
+Route::get('/admin/productinventory', [App\Http\Controllers\HomeController::class, 'productInventory'])->name('productinventory');
+Route::get('/admin/create/productinventory', [App\Http\Controllers\HomeController::class, 'createProductInventory'])->name('productinventory.create');
+Route::post('/admin/store/productinventory', [App\Http\Controllers\HomeController::class, 'storeProductInventory'])->name('productinventory.store');
+Route::get('/admin/edit/productinventory/{id}', [App\Http\Controllers\HomeController::class, 'editProductInventory'])->name('productinventory.edit');
+Route::put('/admin/update/productinventory/{id}', [App\Http\Controllers\HomeController::class, 'updateProductInventory'])->name('productinventory.update');
+Route::delete('/admin/delete/productinventory/{id}', [App\Http\Controllers\HomeController::class, 'deleteProductInventory'])->name('productinventory.delete');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

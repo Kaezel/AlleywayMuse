@@ -73,7 +73,7 @@ class Product extends Model
 
     public function inventory()
     {
-        return $this->hasOne('Modules\Shop\App\Models\ProductInventory');
+        return $this->hasOne('Modules\Shop\App\Models\ProductInventory', 'product_id');
     }
 
     public function variants()
@@ -125,7 +125,8 @@ class Product extends Model
 
     public function getStockStatusLabelAttribute()
     {
-        return self::STOCK_STATUSES[$this->stock_status];
+        $inventory = $this->inventory;
+        return $inventory && $inventory->qty > 0 ? self::STOCK_STATUSES[self::STATUS_IN_STOCK] : self::STOCK_STATUSES[self::STATUS_OUT_OF_STOCK];
     }
 
     public function getStockAttribute()
