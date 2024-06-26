@@ -25,7 +25,7 @@ Welcome to the AlleywayMuse CoffeeShop website, a project created by Triple Trou
 6. Now you can access the website using "folder_name.test".
 
 ## Link Demo Program Video
-link: 
+link: [Demo Program(Youtube)](https://youtu.be/MdscTHEzynw)
 
 
 ## Pengenalan (Bahasa Indonesia)
@@ -54,4 +54,4 @@ Selamat datang di situs web AlleywayMuse CoffeeShop, sebuah proyek yang dibuat o
 6. Sekarang Anda dapat mengakses situs web menggunakan "nama_folder.test"
 
 ## Tautan Video Demo Program
-Tautan: 
+Tautan: [Demo Program(Youtube)](https://youtu.be/MdscTHEzynw)
