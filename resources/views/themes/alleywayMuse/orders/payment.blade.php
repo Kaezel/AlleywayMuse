@@ -45,24 +45,24 @@
                                     <h6 class="my-0">{{ $item->name }}</h6>
                                     <small class="text-muted">Qty: {{ $item->qty }}</small>
                                 </div>
-                                <span class="text-muted">IDR {{ number_format($item->sub_total) }}</span>
+                                <span class="text-muted">Rp {{ number_format($item->sub_total) }}</span>
                             </li>
                             @endforeach
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Item Subtotal</span>
-                                <strong>IDR {{ number_format($order->base_total_price) }}</strong>
+                                <strong>Rp {{ number_format($order->base_total_price) }}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Discount</span>
-                                <strong>IDR {{ number_format($order->discount_amount) }}</strong>
+                                <strong>Rp {{ number_format($order->discount_amount) }}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Tax ({{ $order->tax_percent }}%)</span>
-                                <strong>IDR {{ number_format($order->tax_amount) }}</strong>
+                                <strong>Rp {{ number_format($order->tax_amount) }}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Grand Total</span>
-                                <strong>IDR {{ number_format($order->grand_total) }}</strong>
+                                <strong>Rp {{ number_format($order->grand_total) }}</strong>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-end mt-4">

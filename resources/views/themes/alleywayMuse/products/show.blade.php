@@ -24,23 +24,13 @@
             <div class="col-md-6">
                 <div class="product-detail mt-6 mt-md-0">
                     <h1 class="mb-1">{{ $product->name }}</h1>
-                    <div class="mb-3 rating">
-                        <small class="text-warning">
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star"></i>
-                            <i class="bx bxs-star-half"></i>
-                        </small>
-                        <a href="#" class="ms-2">(30 reviews)</a>
-                    </div>
                     <div class="price">
                         @if ($product->hasSalePrice)
-                            <span class="active-price text-dark">IDR {{ $product->sale_price_label }}</span>
+                            <span class="active-price text-dark">Rp {{ $product->sale_price_label }}</span>
                             <span class="text-decoration-line-through text-muted ms-1">{{ $product->price_label }}</span>
                             <span><small class="discount-percent ms-2 text-danger">{{ $product->discount_percent }}% Off</small></span>
                         @else
-                            <span class="active-price text-dark">IDR {{ $product->price_label }}</span>
+                            <span class="active-price text-dark">Rp {{ $product->price_label }}</span>
                         @endif
                     </div>
                     <hr class="my-6">
@@ -92,29 +82,12 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-product-details-tab" data-bs-toggle="tab" data-bs-target="#nav-product-details" type="button" role="tab" aria-controls="nav-product-details" aria-selected="true">Details</button>
-                        <button class="nav-link" id="nav-product-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-product-reviews" type="button" role="tab" aria-controls="nav-product-reviews" aria-selected="false">Reviews</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active p-3" id="nav-product-details" role="tabpanel" aria-labelledby="nav-product-details-tab">
                         <div class="my-8">
                         <p>{!! $product->body !!}</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade p-3" id="nav-product-reviews" role="tabpanel" aria-labelledby="nav-product-reviews-tab">
-                        <div class="review-form">
-                            <h3>Write a review</h3>
-                            <form>
-                                <div class="form-group">
-                                    <label>Your Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Your Review</label>
-                                    <textarea cols="4" class="form-control"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
                         </div>
                     </div>
                 </div>

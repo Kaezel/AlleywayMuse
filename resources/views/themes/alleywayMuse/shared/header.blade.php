@@ -5,10 +5,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="input-group mx-auto mt-5 mt-lg-0">
-          <input type="text" class="form-control" placeholder="Ngopi apa hari ini?" aria-label="Ngopi apa hari ini?" aria-describedby="button-addon2">
-          <button class="btn btn-outline-warning" type="button" id="button-addon2"><i class="bx bx-search"></i></button>
-        </div>
+        <form class="input-group mx-auto mt-5 mt-lg-0" action="{{ route('search') }}" method="GET">
+          <input type="text" class="form-control" name="query" placeholder="Ngopi apa hari ini?" aria-label="Ngopi apa hari ini?" aria-describedby="button-addon2">
+          <button class="btn btn-outline-warning" type="submit" id="button-addon2"><i class="bx bx-search"></i></button>
+        </form>
         <ul class="navbar-nav ms-auto mt-3 mt-sm-0">
           <li class="nav-item me-5">
             <a class="nav-link" href="{{ route('carts.index') }}">
@@ -45,9 +45,10 @@
               </a>
       
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
+                      <i class="bx bx-log-out me-2"></i>
                       {{ __('Logout') }}
                   </a>
       

@@ -67,6 +67,20 @@
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
           </form>
+
+          @guest
+            @if (Route::has('login'))
+              <li class="nav-item mt-5 mt-lg-0 text-center">
+                  <a class="nav-link btn-second me-lg-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+            @endif
+          @else
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="cursor: default">
+                  {{ Auth::user()->name }}
+              </a>
+            </li>
+          @endguest
       </li>
     </ul>
   </nav>
