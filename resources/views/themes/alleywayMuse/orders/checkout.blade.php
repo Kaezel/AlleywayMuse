@@ -105,10 +105,10 @@
                                                         </a>
                                                         <span>
                                                             @if ($item->product->has_sale_price)
-                                                            <small>IDR {{ $item->product->sale_price_label }}</small>
+                                                            <small>Rp {{ $item->product->sale_price_label }}</small>
                                                             <small class="text-muted text-decoration-line-through">{{ $item->product->price_label }}</small>
                                                             @else
-                                                            <small>IDR {{ $item->product->price_label }}</small>
+                                                            <small>Rp {{ $item->product->price_label }}</small>
                                                             @endif
                                                         </span>
                                                     </div>
@@ -118,7 +118,7 @@
                                                 {{ $item->qty }}
                                             </div>
                                             <div class="col-3 text-lg-end text-start text-md-end col-md-3">
-                                                <span class="fw-bold">IDR {{ number_format($subtotal) }}</span>
+                                                <span class="fw-bold">Rp {{ number_format($subtotal) }}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -127,21 +127,21 @@
                                     <li class="list-group-item py-3">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>Item Subtotal</div>
-                                            <div class="fw-bold">IDR {{ $cart->base_total_price_label }}</div>
+                                            <div class="fw-bold">Rp {{ $cart->base_total_price_label }}</div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>Discount</div>
-                                            <div class="fw-bold">IDR {{ $cart->discount_amount_label }}</div>
+                                            <div class="fw-bold">Rp {{ $cart->discount_amount_label }}</div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div>Tax (10%)</div>
-                                            <div class="fw-bold">IDR {{ $cart->tax_amount_label }}</div>
+                                            <div class="fw-bold">Rp {{ $cart->tax_amount_label }}</div>
                                         </div>
                                     </li>
                                     <li class="list-group-item py-3">
                                         <div class="d-flex align-items-center justify-content-between mb-2 fw-bold">
                                             <div>Grand Total</div>
-                                            <div id="grand-total">IDR {{ $cart->grand_total_label }}</div>
+                                            <div id="grand-total">Rp {{ $cart->grand_total_label }}</div>
                                         </div>
                                     </li>
                                 </ul>

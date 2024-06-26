@@ -28,7 +28,7 @@
                       <i class="bx bxs-star"></i>
                   </div>
                   <div class="detail d-flex justify-content-between align-items-center mt-4">
-                      <p class="price">IDR {{ number_format($product->price, 0, ',', '.') }}</p> <!-- Modifikasi -->
+                      <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p> <!-- Modifikasi -->
                   </div>
               </div>
           </div>
@@ -44,15 +44,42 @@
         <div class="row justify-content-center text-center">
           <div class="col-lg-6 col-md-7 col-10 col-sub">
             <h1>Subscribe to get latest updates!</h1>
-            <form action="#" class="mt-5">
+            <form action="#" class="mt-5" id="subscribe-form">
               <div class="input-group w-100">
-                <input type="email" class="form-control" placeholder="Type your email ..">
-                <button class="btn btn-outline-warning">Subscribe</button>
+                <input type="email" class="form-control" id="email-input" placeholder="Type your email ..">
+                <button class="btn btn-outline-warning" id="subscribe-button" disabled>Subscribe</button>
               </div>
             </form>
+            <p id="thank-you-message" style="display:none; color: green; margin-top: 20px;"></p>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const emailInput = document.getElementById('email-input');
+      const subscribeButton = document.getElementById('subscribe-button');
+      const thankYouMessage = document.getElementById('thank-you-message');
+      const form = document.getElementById('subscribe-form');
+  
+      emailInput.addEventListener('input', function() {
+        if (emailInput.value.trim() !== "") {
+          subscribeButton.disabled = false;
+        } else {
+          subscribeButton.disabled = true;
+        }
+      });
+  
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const emailValue = emailInput.value.trim();
+        thankYouMessage.textContent = `Thank you for subscribing, ${emailValue}!`;
+        thankYouMessage.style.display = 'block';
+        emailInput.value = '';
+        subscribeButton.disabled = true;
+      });
+    });
+  </script>  
 @endsection

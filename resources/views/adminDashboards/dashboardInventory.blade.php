@@ -12,7 +12,7 @@
     </div>
     <section class="content">
         <div class="container-fluid">
-            <a href="{{ route('productinventory.create') }}" class="btn btn-primary mb-3">Add Product Inventory</a>
+            <a href="{{ route('productinventory.create') }}" class="btn btn-primary mb-3">Add Data</a>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Product Inventory Table</h3>
