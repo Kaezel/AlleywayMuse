@@ -1,3 +1,5 @@
+{{-- ORDER SUMMARY / PAYMENT PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')
@@ -78,6 +80,7 @@
     </div>
 </section>
 
+{{-- SCRIPT UTK MENG ENABLE PAID BUTTON KETIKA LINK WHATSAPP TELAH DITEKAN UTK MENGKONFIRMASI PEMBAYARAN --}}
 <script>
     document.getElementById('whatsapp-link').addEventListener('click', function() {
         document.getElementById('paid-button').disabled = false;

@@ -1,3 +1,5 @@
+{{-- TEMPLATE PRODUCT BOX --}}
+
 <div class="col-lg-3 col-6">
     <div class="card card-product card-body p-lg-4 p3">
       <a href="{{ shop_product_link($product) }}"><img src={{ asset('themes/alleywayMuse/assets/img/' . $product->featured_image) }} alt="" class="img-fluid"></a>

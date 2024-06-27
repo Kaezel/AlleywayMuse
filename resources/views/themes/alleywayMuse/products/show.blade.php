@@ -1,3 +1,5 @@
+{{-- PRODUCT DETAIL PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')

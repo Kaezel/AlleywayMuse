@@ -41,6 +41,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        // Memeriksa jika email yang masuk adalah 'admin@alleywaymuse.com' akan diarahkan ke page admin dashboard user (yang namanya diinisialisasikan menjadi 'user')
         if ($user->email == 'admin@alleywaymuse.com') {
             return redirect()->route('user');
         }

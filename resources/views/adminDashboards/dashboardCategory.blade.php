@@ -1,3 +1,5 @@
+{{-- DASHBOARD CATEGORY PAGE --}}
+
 @extends('layouts.dashboardLayout')
 @section('content')
 <div class="content-wrapper">

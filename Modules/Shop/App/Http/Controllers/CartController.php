@@ -18,15 +18,14 @@ class CartController extends Controller
     protected $cartRepository;
     protected $productRepository;
 
+    // Constructor untuk menginisialisasi repository yang digunakan
     public function __construct(CartRepositoryInterface $cartRepository, ProductRepositoryInterface $productRepository)
     {
         $this->cartRepository = $cartRepository;
         $this->productRepository = $productRepository;
     }
     
-    /**
-     * Display a listing of the resource.
-     */
+    // Method untuk menampilkan daftar produk di keranjang
     public function index()
     {
         $cart = $this->cartRepository->findByUser(auth()->user());
@@ -35,23 +34,20 @@ class CartController extends Controller
         return $this->loadTheme('carts.index', $this->data);
     }
 
+    // Method untuk menghitung jumlah produk di keranjang
     public function getItemCount()
     {
         $itemCount = $this->cartRepository->countItems(auth()->user());
         return view('themes.alleywayMuse.shared.header', compact('itemCount'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Method untuk menampilkan form pembuatan resource baru
     public function create()
     {
         return view('shop::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Method untuk menyimpan resource baru ke storage
     public function store(Request $request)
     {
         $productID = $request->get('product_id');
@@ -75,25 +71,19 @@ class CartController extends Controller
         return redirect(shop_product_link($product))->with('success', 'Berhasil menambahkan item ke keranjang');
     }
 
-    /**
-     * Show the specified resource.
-     */
+    // Method untuk menampilkan resource yang ditentukan
     public function show($id)
     {
         return view('shop::show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Method untuk menampilkan form pengeditan resource yang ditentukan
     public function edit($id)
     {
         return view('shop::edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Method untuk memperbarui resource yang ditentukan di storage
     public function update(Request $request)
     {
         $items = $request->get('qty');
@@ -102,9 +92,7 @@ class CartController extends Controller
         return redirect(route('carts.index'))->with('success', 'Keranjang telah diperbaharui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Method untuk menghapus resource yang ditentukan dari storage
     public function destroy($id)
     {
         $this->cartRepository->removeItem($id);

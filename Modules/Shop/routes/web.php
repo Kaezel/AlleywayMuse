@@ -16,22 +16,26 @@ use Modules\Shop\App\Http\Controllers\CartController;
 use Modules\Shop\App\Http\Controllers\OrderController;
 use Modules\Shop\App\Http\Controllers\ProductController;
 
+// ROUTES PRODUCTS, CATEGORY, SEARCH
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/category/{categorySlug}', [ProductController::class, 'category'])->name('products.category');
 Route::get('/tag/{tagSlug}', [ProductController::class, 'tag'])->name('products.tag');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::middleware(['auth'])->group(function() {
+    // ROUTES ORDERS PAGE
     Route::get('orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
     Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/payment', [OrderController::class, 'payment'])->name('orders.payment');
     Route::post('orders/mark-as-paid/{orderId}', [OrderController::class, 'markAsPaid'])->name('orders.markAsPaid');
 
+    // ROUTES CARTS PAGE
     Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
     Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
     Route::get('/carts/{id}/remove', [CartController::class, 'destroy'])->name('carts.destroy');
     Route::put('/carts', [CartController::class, 'update'])->name('carts.update');
 
+    // ROUTES ADDRESS USER PAGE
     Route::get('addresses/create', [AddressController::class, 'create'])->name('addresses.create');
     Route::post('addresses/store', [AddressController::class, 'store'])->name('addresses.store');
     Route::get('addresses/{id}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
@@ -39,4 +43,5 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('addresses/{id}/delete', [AddressController::class, 'delete'])->name('addresses.delete');
 });
 
+// ROUTES PRODUCT DETAILS
 Route::get('/{categorySlug}/{productSlug}', [ProductController::class, 'show'])->name('products.show');

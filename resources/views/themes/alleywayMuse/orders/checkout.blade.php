@@ -1,3 +1,5 @@
+{{-- CHECKOUT PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')
@@ -154,6 +156,7 @@
     </div>
 </section>
 
+{{-- SCRIPT UTK MEMBUAT BUTTON PLACE ORDER ENABLED DAN FUNCTION DELETE ADDRESS USER --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const addressRadios = document.querySelectorAll('.delivery-address');

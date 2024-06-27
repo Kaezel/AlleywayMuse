@@ -1,3 +1,5 @@
+{{-- REQUEST LINK RESET PASSWORD PAGE --}}
+
 @extends('layouts.app')
 
 @section('content')

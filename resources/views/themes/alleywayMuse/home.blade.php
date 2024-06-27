@@ -1,3 +1,5 @@
+{{-- HOME PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 @include('themes.alleywayMuse.shared.slider')
 @section('content')
@@ -17,18 +19,11 @@
           <div class="col-lg-3 col-6">
               <div class="card card-product card-body p-lg-4 p3">
                   <a href="{{ shop_product_link($product) }}">
-                      <img src="{{ asset('themes/alleywayMuse/assets/img/' . $product->featured_image) }}" alt="" class="img-fluid"> <!-- Modifikasi -->
+                      <img src="{{ asset('themes/alleywayMuse/assets/img/' . $product->featured_image) }}" alt="" class="img-fluid"> 
                   </a>
-                  <h3 class="product-name mt-3">{{ $product->name }}</h3> <!-- Modifikasi -->
-                  <div class="rating">
-                      <i class="bx bxs-star"></i>
-                      <i class="bx bxs-star"></i>
-                      <i class="bx bxs-star"></i>
-                      <i class="bx bxs-star"></i>
-                      <i class="bx bxs-star"></i>
-                  </div>
+                  <h3 class="product-name mt-3">{{ $product->name }}</h3> 
                   <div class="detail d-flex justify-content-between align-items-center mt-4">
-                      <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p> <!-- Modifikasi -->
+                      <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p> 
                   </div>
               </div>
           </div>
@@ -36,7 +31,7 @@
       </div>
     </div>
   </section>
-
+  
   <!-- Subscribe  -->
   <section class="subscribe">
     <div class="container">
@@ -57,6 +52,7 @@
     </div>
   </section>
   
+  {{-- SCRIPT MENAMPILKAN MESSAGE SETELAH SUBSCRIBE BUTTON DI TEKAN --}}
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const emailInput = document.getElementById('email-input');

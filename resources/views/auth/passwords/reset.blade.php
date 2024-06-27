@@ -1,3 +1,5 @@
+{{-- SET NEW PASSWORD PAGE --}}
+
 @extends('layouts.app')
 
 @section('content')

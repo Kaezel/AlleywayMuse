@@ -18,6 +18,7 @@ class TagFactory extends Factory
      */
     public function definition(): array
     {
+        // Generate nama tag acak menggunakan helper fake()
         $name = fake()->sentence(2);
         
         return [

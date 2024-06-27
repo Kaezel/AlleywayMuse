@@ -1,3 +1,5 @@
+{{-- DASHBOARD ADD USER PAGE --}}
+
 @extends('layouts.dashboardLayout')
 @section('content')
 <div class="content-wrapper">

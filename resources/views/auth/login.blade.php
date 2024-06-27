@@ -1,3 +1,5 @@
+{{-- LOGIN PAGE --}}
+
 @extends('layouts.app')
 
 @section('content')

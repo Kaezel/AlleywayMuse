@@ -1,3 +1,5 @@
+// FUNCTION SLIDER PADA SIDEBAR ALL PRODUCTS
+
 $(function () {
     $("#slider-range").slider({
         range: true,

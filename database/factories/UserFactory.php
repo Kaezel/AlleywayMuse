@@ -23,11 +23,17 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        // Mengembalikan array atribut default untuk model User
         return [
+            // Nama pengguna acak
             'name' => fake()->name(),
+            // Email unik dan aman untuk pengguna
             'email' => fake()->unique()->safeEmail(),
+            // Tanggal dan waktu ketika email diverifikasi, diset saat ini
             'email_verified_at' => now(),
+            // Password pengguna, jika belum diset sebelumnya, hash dari 'password'
             'password' => static::$password ??= Hash::make('password'),
+            // Token acak untuk "remember me"
             'remember_token' => Str::random(10),
         ];
     }
@@ -37,6 +43,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
+        // Mengubah state dari model sehingga 'email_verified_at' menjadi null
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);

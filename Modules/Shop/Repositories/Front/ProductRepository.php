@@ -9,8 +9,10 @@ use Modules\Shop\Repositories\Front\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository implements ProductRepositoryInterface {
 
+    // Mendapatkan semua produk dari database, dengan filter dan sorting yang dapat diatur
     public function findAll($options = [])
     {
+        // Mengambil opsi pagination, filter, dan sorting dari array $options
         $perPage = $options['per_page'] ?? null;
         $categorySlug = $options['filter']['category'] ?? null;
         $tagSlug = $options['filter']['tag'] ?? null;
@@ -18,8 +20,10 @@ class ProductRepository implements ProductRepositoryInterface {
         $sort = $options['sort'] ?? null;
         $searchQuery = $options['filter']['search'] ?? null;
 
+        // Mengambil produk dengan eager loading categories dan tags
         $products = Product::with(['categories', 'tags']);
 
+        // Filter by category
         if ($categorySlug) {
             $category = Category::where('slug', $categorySlug)->firstOrFail();
 
@@ -32,6 +36,7 @@ class ProductRepository implements ProductRepositoryInterface {
             });
         }
 
+        // Filter by tag
         if ($tagSlug){
             $tag = Tag::where('slug', $tagSlug)->firstOrFail();
 
@@ -40,30 +45,37 @@ class ProductRepository implements ProductRepositoryInterface {
             });
         }
 
+        // Filter by price
         if ($priceFilter) {
             $products = $products->where('price', '>=', $priceFilter['min'])
                 ->where('price', '<=', $priceFilter['max']);
         }
 
+        // Sorting produk
         if ($sort) {
             $products = $products->orderBy($sort['sort'], $sort['order']);
         }
 
+        // Filter by search query
         if ($searchQuery) {
             $products = $products->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($searchQuery) . '%']);
         }
 
+        // Pagination
         if ($perPage) {
             return $products->paginate($perPage);
         }
 
         return $products->get();
     }
+
+    // Mendapatkan produk berdasarkan SKU, atau mengembalikan exception jika tidak ditemukan
     public function findBySKU($sku)
     {
         return Product::where('sku', $sku)->firstOrFail();
     }
 
+    // Mengambil produk berdasarkan ID-nya, atau mengembalikan exception jika tidak ditemukan
     public function findByID($id)
     {
         return Product::where('id', $id)->firstOrFail();

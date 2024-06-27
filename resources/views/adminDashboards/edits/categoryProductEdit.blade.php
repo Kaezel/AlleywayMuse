@@ -1,3 +1,5 @@
+{{-- DASHBOARD EDIT CATEGORY PRODUCT PAGE --}}
+
 @extends('layouts.dashboardLayout')
 @section('content')
 <div class="content-wrapper">

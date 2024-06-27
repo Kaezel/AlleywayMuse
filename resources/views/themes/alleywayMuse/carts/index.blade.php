@@ -1,3 +1,5 @@
+{{-- SHOPPING CART PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')

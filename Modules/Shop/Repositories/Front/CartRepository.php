@@ -10,6 +10,8 @@ use Modules\Shop\Repositories\Front\Interfaces\CartRepositoryInterface;
 
 class CartRepository implements CartRepositoryInterface{
 
+    // Mencari cart berdasarkan user yang diberikan
+    // Jika cart tidak ditemukan, maka akan membuat cart baru
     public function findByUser(User $user): ?Cart
     {
         $cart = Cart::with([
@@ -33,12 +35,15 @@ class CartRepository implements CartRepositoryInterface{
         return $cart;
     }
 
+    // Menghitung jumlah item dalam cart berdasarkan user yang diberikan
     public function countItems(User $user): int
     {
         $cart = $this->findByUser($user);
         return $cart ? $cart->items()->count() : 0;
     }
 
+    // Menambahkan item ke dalam cart
+    // Jika item sudah ada dalam cart, maka akan menambahkan quantity
     public function addItem($product, $qty): CartItem
     {
         $cart = $this->findByUser(auth()->user());
@@ -66,17 +71,19 @@ class CartRepository implements CartRepositoryInterface{
         return $existItem;
     }
 
-
+    // Menghapus item dari cart
     public function removeItem($id) : bool
     {
         return CartItem::where('id', $id)->delete();
     }
 
+    // Menghapus semua item dari cart berdasarkan user yang diberikan
     public function clear(User $user) : void
     {
         Cart::forUser($user)->delete();
     }
 
+    // Mengupdate quantity item dalam cart
     public function updateQty($items = []): void
     {
         if (!empty($items)) {
@@ -90,7 +97,7 @@ class CartRepository implements CartRepositoryInterface{
         }
     }
 
-
+    // Menghitung total harga, diskon, pajak, dan berat dalam cart
     private function calculateCart(Cart $cart): void
     {
         $baseTotalPrice = 0;

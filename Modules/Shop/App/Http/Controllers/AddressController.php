@@ -16,11 +16,13 @@ class AddressController extends Controller
         $this->addressRepository = $addressRepository;
     }
 
+    // Menampilkan form untuk membuat alamat baru
     public function create()
     {
         return view('themes.alleywayMuse.addresses.create');
     }
 
+    // Membuat alamat baru dan menyimpannya ke database
     public function store(Request $request)
     {
         $request->validate([
@@ -43,6 +45,7 @@ class AddressController extends Controller
         return redirect()->route('orders.checkout')->with('success', 'Address added successfully.');
     }
 
+    // Menampilkan form untuk mengedit alamat yang spesifik
     public function edit($id)
     {
         $address = $this->addressRepository->findByID($id);
@@ -54,6 +57,7 @@ class AddressController extends Controller
         return view('themes.alleywayMuse.addresses.edit', compact('address'));
     }
 
+    // Memperbarui alamat yang spesifik
     public function update(Request $request, $id)
     {
         $address = $this->addressRepository->findByID($id);
@@ -68,6 +72,7 @@ class AddressController extends Controller
         return redirect()->route('orders.checkout');
     }
     
+    // Menghapus alamat yang spesifik
     public function delete($id)
     {
         $address = $this->addressRepository->findByID($id);

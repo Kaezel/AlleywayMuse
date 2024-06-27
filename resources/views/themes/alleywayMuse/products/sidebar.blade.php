@@ -1,3 +1,5 @@
+{{-- TEMPLATE SIDEBAR UTK ALL PRODUCTS --}}
+
 <div class="sidebar">
   @if ($categories->count() > 0)
   <div class="sidebar-widget">

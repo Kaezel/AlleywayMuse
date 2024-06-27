@@ -9,9 +9,11 @@ class ShopDatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+    // Fungsi untuk menjalankan seeding data
     public function run(): void
     {
-        // $this->call([]);
+        // Jalankan ProductSeeder
         $this->call(ProductSeeder::class);
     }
 }

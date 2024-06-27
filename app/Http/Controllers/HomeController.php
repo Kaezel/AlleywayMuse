@@ -32,7 +32,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    // VIEW
+    // FUNCTION VIEW FOR ADMIN DASHBOARD
     public function user()
     {
         $users = User::all();
@@ -70,7 +70,7 @@ class HomeController extends Controller
         return view('adminDashboards.dashboardInventory', compact('inventories'));
     }
 
-    // CREATE
+    // FUNCTION CREATE FOR ADMIN DASHBOARD
     public function createUser()
     {
         return view('adminDashboards.creates.userCreate');
@@ -96,7 +96,7 @@ class HomeController extends Controller
         return view('adminDashboards.creates.inventoryCreate');
     }
 
-    // STORE
+    // FUNCTION STORE FOR ADMIN DASHBOARD
     public function storeUser(Request $request)
     {
 
@@ -199,7 +199,6 @@ class HomeController extends Controller
         $product_id = $request->input('product_id');
         $category_id = $request->input('category_id');
 
-        // Insert data into shop_categories_products table
         DB::table('shop_categories_products')->insert([
             'product_id' => $product_id,
             'category_id' => $category_id,
@@ -222,7 +221,7 @@ class HomeController extends Controller
         return redirect()->route('productinventory');
     }
 
-    // EDIT
+    // FUNCTION EDIT FOR ADMIN DASHBOARD
     public function editUser(Request $request, $id)
     {
         $users = User::find($id);
@@ -263,7 +262,7 @@ class HomeController extends Controller
         return view('adminDashboards.edits.inventoryEdit', compact('inventory'));
     }
 
-    // UPDATE
+    // FUNCTION UPDATE FOR ADMIN DASHBOARD
     public function updateUser(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -302,8 +301,6 @@ class HomeController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-        // dd($request->all());
-
         $find = Product::find($id);
 
         $products['name']           = $request->name;
@@ -314,7 +311,6 @@ class HomeController extends Controller
         $products['body']           = $request->body;
         $products['weight']         = $request->weight;
 
-        // Menghandle unggahan gambar
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -420,7 +416,7 @@ class HomeController extends Controller
         return redirect()->route('productinventory');
     }
 
-    // DELETE
+    // FUNCTION DELETE FOR ADMIN DASHBOARD
     public function deleteUser(Request $request, $id)
     {
         $users = User::find($id);
@@ -483,7 +479,7 @@ class HomeController extends Controller
         return redirect()->route('productinventory');
     }
 
-    // INDEX HOME
+    // FUNCTION INDEX HOME PAGE
     public function index()
     {
         $popularProducts = Product::whereIn('id', [1,5,3,7])->get();

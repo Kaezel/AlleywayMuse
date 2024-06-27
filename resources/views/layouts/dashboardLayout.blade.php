@@ -1,3 +1,5 @@
+{{-- DASHBOARD LAYOUT --}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

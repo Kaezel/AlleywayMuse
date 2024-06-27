@@ -1,3 +1,5 @@
+{{-- TEMPLATE SLIDER HOME PAGE --}}
+
 <div class="container menu-wrapper fixed-top d-none d-lg-block">
   <div class="menu d-flex justify-content-center align-items-center">
       <li><a class="nav-link active" href="#" id="scrollToTop">Home</a></li>

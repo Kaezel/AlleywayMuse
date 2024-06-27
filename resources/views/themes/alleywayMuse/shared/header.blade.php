@@ -1,3 +1,5 @@
+{{-- TEMPLATE HEADER --}}
+
 <nav class="navbar navbar-expand-lg bg-white fixed-top py-4 shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="{{ url('/') }}">Alleyway<span>Muse</span></a>

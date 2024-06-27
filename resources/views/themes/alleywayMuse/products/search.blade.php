@@ -1,3 +1,5 @@
+{{-- SEARCH PAGE --}}
+
 @extends('themes.alleywayMuse.layouts.app')
 
 @section('content')

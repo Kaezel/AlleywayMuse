@@ -56,6 +56,17 @@ class Order extends Model
     public const STATUS_RETURNED = 'RETURNED';
 
     public const ORDER_CODE = 'ORDER';
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($order) {
+    //         if (is_null($order->status)) {
+    //             $order->status = self::STATUS_PENDING;
+    //         }
+    //     });
+    // }
     
     protected static function newFactory(): OrderFactory
     {

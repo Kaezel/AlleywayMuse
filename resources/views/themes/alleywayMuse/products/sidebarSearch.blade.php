@@ -1,3 +1,5 @@
+{{-- TEMPLATE SIDEBAR UTK SEARCH --}}
+
 <div class="sidebar">
   @if ($categories->count() > 0)
   <div class="sidebar-widget">

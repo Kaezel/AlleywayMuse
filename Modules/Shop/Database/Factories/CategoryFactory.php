@@ -18,6 +18,7 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        // Buat nama kategori secara acak dengan 2 kata
         $name = fake()->sentence(2);
 
         return [

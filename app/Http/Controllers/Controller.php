@@ -18,8 +18,11 @@ class Controller extends BaseController
 
     }
 
+    // Metode untuk memuat tema tampilan
     protected function loadTheme($view, $data = [])
     {
+        // Mengembalikan tampilan dengan tema yang diatur dalam .env
+        // atau tema 'default' jika tidak ada tema yang diatur
         return view('themes/'. env('APP_THEME', 'default') . '/' . $view , $data); 
     }
 }

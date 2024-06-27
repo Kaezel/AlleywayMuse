@@ -15,6 +15,7 @@ class OrderController extends Controller
     protected $cartRepository;
     protected $orderRepository;
 
+    // Constructor utk menginisialisasi repository yang dibutuhkan
     public function __construct(AddressRepositoryInterface $addressRepository, CartRepositoryInterface $cartRepository, OrderRepositoryInterface $orderRepository) 
     {
         $this->addressRepository = $addressRepository;
@@ -22,6 +23,7 @@ class OrderController extends Controller
         $this->orderRepository = $orderRepository;
     }
 
+    // Method untuk menampilkan halaman checkout
     public function checkout() 
     {
         $this->data['cart'] = $this->cartRepository->findByUser(auth()->user());
@@ -29,6 +31,7 @@ class OrderController extends Controller
         return $this->loadTheme('orders.checkout', $this->data);
     }
 
+    // Method untuk menyimpan order baru
     public function store(Request $request)
     {
         $address = $this->addressRepository->findByID($request->get('address_id'));
@@ -36,6 +39,7 @@ class OrderController extends Controller
 
         DB::beginTransaction();
         try {
+            // Membuat order baru
             $order = $this->orderRepository->create($request->user(), $cart, $address);
             $order->courier_name = $request->get('courier_name');
             $order->save();
@@ -48,6 +52,7 @@ class OrderController extends Controller
         return view('themes.alleywayMuse.orders.payment', ['order' => $order]);
     }
     
+    // Method untuk menandai order sebagai sudah dibayar
     public function markAsPaid(Request $request, $orderId)
     {
         $order = $this->orderRepository->findByID($orderId);

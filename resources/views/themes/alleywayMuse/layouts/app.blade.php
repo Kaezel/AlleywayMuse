@@ -18,6 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- MEMANGGIL SCSS, JS, CSS PADA VITE --}}
     @vite([
         'resources/sass/app.scss',
         'resources/js/app.js',
@@ -31,10 +32,12 @@
 
 </head>
 <body>
+    {{-- MEMANGGIL HEADER, CONTENT, DAN FOOTER --}}
     @include('themes.alleywayMuse.shared.header')
     @yield('content')
     @include('themes.alleywayMuse.shared.footer')
     
+    {{-- MEMANGGIL SCRIPT JS JQUERY --}}
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
 </html>

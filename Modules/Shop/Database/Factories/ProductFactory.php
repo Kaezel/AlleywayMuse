@@ -19,6 +19,7 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        // Generate nama produk acak menggunakan helper fake()
         $name = fake()->words(2, true);
 
         return [

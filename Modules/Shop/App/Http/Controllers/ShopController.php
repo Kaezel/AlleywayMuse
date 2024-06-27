@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class ShopController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan daftar resource.
      */
     public function index()
     {
@@ -18,7 +18,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     *  Menampilkan form untuk membuat resource baru.
      */
     public function create()
     {
@@ -26,7 +26,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Menyimpan resource baru ke storage.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -34,7 +34,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the specified resource.
+     * Menampilkan resource yang spesifik.
      */
     public function show($id)
     {
@@ -42,7 +42,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Menampilkan form untuk mengedit resource yang spesifik.
      */
     public function edit($id)
     {
@@ -50,7 +50,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Memperbarui resource yang spesifik di storage.
      */
     public function update(Request $request, $id): RedirectResponse
     {
@@ -58,7 +58,7 @@ class ShopController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus resource yang spesifik dari storage.
      */
     public function destroy($id)
     {
